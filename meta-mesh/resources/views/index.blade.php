@@ -68,17 +68,18 @@
     
             </div>
         </div>
-        <div class="w-1/3 h-4/5 bg-gradient-to-br from-[#ee8f26] to-[#caa100] rounded-3xl flex flex-col justify-center items-center">
+        <div class="w-1/3 h-4/5 bg-gradient-to-tl from-[#e3e3e3] to-[#ffe08f] rounded-3xl flex flex-col justify-center items-center">
             <div class="w-2/3 h-3/4 flex flex-col items-center justify-center">
                 <div class="w-full h-1/4 flex flex-col">
                     <h1 class="font-bruno font-black text-3xl text-white w-fit p-1 bg-black">Welcome Back!</h1>
-                    <p class="text-white text-md">Login to explore your metaverse</p>
+                    <p class="text-[#717171] text-md">Login to explore your metaverse</p>
                 </div>
                 <div class="w-full h-full flex flex-col">
-                    <form class="flex flex-col" action="" method="POST">
-                        <label class="text-md text-white" for="name">Email or Student ID</label>
+                    <form class="flex flex-col" action="{{ route('login_auth') }}" method="POST">
+                        @csrf
+                        <label class="text-md text-[#717171]" for="name">Email or Student ID</label>
                         <input class="bg-gray-50 text-gray-900 text-sm rounded-lg w-3/4 p-2.5 mb-5" type="text" name="email" id="name" placeholder="absc@bsabc.uiu.ac.bd">
-                        <label class="text-md text-white" for="pass">Password</label>
+                        <label class="text-md text-[#717171]" for="pass">Password</label>
                         <input class="bg-gray-50 text-gray-900 text-sm rounded-lg w-3/4 p-2.5" type="password" name="pass" id="pass" placeholder="***********">
                         <a href="" class="text-sm mt-1 text-red-100 underline font-bold">Forget Password?</a>
                         <input class="cursor-pointer w-3/4 p-2 mt-4 bg-[#B56E00] rounded-xl shadow-xl text-white" type="submit" name="sub" id="" value="Login">

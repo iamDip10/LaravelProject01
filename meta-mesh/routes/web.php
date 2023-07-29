@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\signupController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\dashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [loginController::class, 'index'])->name("login");
+Route::post('/', [loginController::class, 'validates'])-> name("login_auth");
+Route::get('/signup', [signupController::class, 'index'] )->name("signup");
+Route::post('/signup', [signupController::class, 'push'] )->name("signup_push");
+Route::get('/dashboard/{obj}', [dashboardController::class,'index'])->name('dashb') ;
 
-Route::get('/signup', function() {
-    return view('signup');
-})->name("signup");
 
