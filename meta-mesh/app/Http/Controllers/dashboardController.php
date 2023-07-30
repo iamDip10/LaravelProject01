@@ -10,6 +10,6 @@ class dashboardController extends Controller
         //echo $obj;
         $user = student::find($obj) ;
 
-        return view('dashboard', ['users'=> $user]) ;
+        return view('dashboard', ['users'=> $user, 'email'=> $obj]) ;
     }
 }
