@@ -9,6 +9,28 @@
 </head>
 <body>
     <div class="w-screen h-screen overflow-hidden flex flex-col">
+        <div class="w-1/3 absolute h-2/3 bg-gray-100 mt-28 shadow-2xl rounded-2xl flex flex-col" id="post" style="margin-left:75vh; display:none;">
+            <div class="w-full h-20 flex justify-center items-center text-xl font-bold">
+                <h1>Create Post</h1>
+            </div>
+            <div class="w-full h-3/4 flex flex-col items-center mt-1 ">
+                <form action="" method="POST" class="flex flex-col">
+                    <textarea name="post" class="rounded-2xl px-10 py-7 text-md" id="" cols="50" rows="14" style="resize:none"></textarea>
+                    <div class="w-full flex justify-between mt-3">
+                        <select name="cat" id="" class="w-1/3 flex items-center text-center rounded-2xl">
+                            <option value="urgent">Urgent</option>
+                            <option value="help">Help</option>
+                            <option value="club">Club</option>
+                            <option value="job">Job</option>
+                            <option value="seek">Seeking Post</option>
+
+
+                        </select>
+                        <input type="submit" name="sub" id="" value="Publish" class="w-24 rounded-2xl bg-orange-400 h-12 bg-black">
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="w-full h-24 flex items-center ">
             <div class="w-1/4 h-full flex items-center pl-9">
                 <img src="{{ asset('images/logo.png')}}" alt="" class="h-15 w-20">
@@ -25,7 +47,7 @@
                 </div>
                 <div class="w-1/4 h-full flex flex-col items-center justify-center hover:text-orange-500 hover:font-bold">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="M5.5 6.5h.01m4.49 0h.01m4.49 0h.01M18 1H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="M16 5h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-2v3l-4-3H8m4-13H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h2v3l4-3h4a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
                     </svg>
                     <h3>Messages</h3>
                 </div>
@@ -59,7 +81,7 @@
         <div class="w-full h-full overflow-hidden flex ">
 
             <div class="w-1/4 h-full flex flex-col mt-3 px-9 items-center">
-                <div class="w-full h-1/3 bg-gradient-to-b from-[#EEB81F] to-[#FFFFFF] flex flex-col rounded-2xl">
+                <div class="w-full h-1/3 bg-gradient-to-b from-orange-300 to-orange-400 flex flex-col rounded-2xl">
                     <div class="w-full h-28 flex px-10 mt-5">
                         <img src="" alt="" class="h-24 w-24 rounded-full bg-black">
                         <div class="w-1/2 ml-2 h-24 flex flex-col justify-center font-bold text-gray-700">
@@ -97,35 +119,84 @@
                     </div>
                 </div>
             </div>
-            <div class="w-2/4 bg-gray-100 flex flex-col mt-3 px-14 h-full items-center rounded-2xl">
-                <div class="w-full h-24 bg-gray-200 mt-4 rounded-2xl flex items-center justify-center">
-                    <img src="" alt="" class="h-20 w-20 rounded-full bg-black">
-                    <button class="w-3/4 ml-3 h-14 pl-8 text-gray-300 bg-white flex items-center rounded-2xl">Share your thoughts</button>
+            <div class="w-2/4 flex flex-col mt-3 px-14 h-full items-center rounded-2xl">
+                <div class="w-full h-20 bg-gray-100 rounded-2xl flex flex-col items-center justify-center">
+                    <div class="flex w-full justify-center">
+                        <img src="" alt="" class="h-12 w-12 rounded-full bg-black">
+                        <button class="w-3/4 ml-3 h-10 pl-8 text-gray-300 bg-white flex items-center rounded-2xl" onclick="popup()">Share your thoughts</button>
+                    </div>
+                    
+                    
                 </div>
-                <div class="w-full h-5/6 mt-5 px-5 rounded-2xl bg-gray-200 pb-2 overflow-y-auto">
+                <div class="w-full h-5/6 mt-5 px-10 rounded-2xl bg-gray-100 pb-2 overflow-y-auto">
 
-                <!-- createpost -->
-                    <div class="w-full h-fit flex flex-col rounded-2xl bg-[#DCD8CD] px-8 mt-6 mb-5">
+                    <!-- createpost -->
+                    <div class="w-full h-fit flex flex-col rounded-2xl bg-orange-100 px-8 mt-6 mb-5">
                         <div class="w-full h-20 flex items-center">
-                            <img src="" alt="" class="w-14 h-14 rounded-full bg-black">
+                            <img src="" alt="" class="w-12 h-12 rounded-full bg-black">
                             <div class="w-2/3 h-fit flex flex-col">
-                                <h3 class="ml-4 text-xl font-bold">{{$users->fisrtname." ".$users->lastname}}</h3>
-                                <h3 class="ml-4">{{$email}}</h3>
+                                <h3 class="ml-2 text-md font-bold">{{$users->fisrtname." ".$users->lastname}}</h3>
+                                <h3 class="ml-2">{{$email}}</h3>
                             </div>
                         </div>
-                        <div class="w-full h-fit mt-3 mb-6">
+                        <div class="w-full h-fit mt-2 mb-6">
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem veritatis vero adipisci dicta voluptate libero reprehenderit harum voluptatum numquam facere. Ad, et expedita modi amet ex aut. Minima rem numquam aliquid aliquam debitis. Minus a et tenetur doloribus autem, quas repellendus soluta dicta ullam voluptas! Deserunt ducimus quaerat quam vel atque reprehenderit. Dolore reprehenderit velit similique voluptas doloremque iure quasi.</p>
                         </div>
-                        
+                        <div class="w-full h-7 flex mb-6 justify-center items-center">
+                            <div class="w-1/3 h-full flex">
+                                <button class="w-full h-full flex items-center justify-center hover:text-orange-500">
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="M4.008 8.714c1-.097 1.96-.45 2.792-1.028a25.112 25.112 0 0 0 4.454-5.72 1.8 1.8 0 0 1 .654-.706 1.742 1.742 0 0 1 1.65-.098 1.82 1.82 0 0 1 .97 1.128c.075.248.097.51.065.767l-1.562 4.629M4.008 8.714H1v9.257c0 .273.106.535.294.728a.99.99 0 0 0 .709.301h1.002a.99.99 0 0 0 .71-.301c.187-.193.293-.455.293-.728V8.714Zm8.02-1.028h4.968c.322 0 .64.08.925.232.286.153.531.374.716.645a2.108 2.108 0 0 1 .242 1.883l-2.36 7.2c-.288.813-.48 1.354-1.884 1.354-2.59 0-5.39-1.06-7.504-1.66"/>
+                                    </svg>
+                                    <h3 class="ml-2">Upvote</h3>
+                                </button>
+                            </div>
+                            <div class="w-1/3 h-full">
+                                <button class="w-full h-full flex justify-center items-center hover:text-orange-500">
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+                                    </svg>
+                                    <h3 class="ml-2">Comment</h3>
+                                </button>
+                            </div>
+                            <div class="w-1/3 h-full">
+                                <button class="w-full h-full flex justify-center items-center hover:text-orange-500">
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 15">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9" d="m13.717 1 5.518 4.95a1.05 1.05 0 0 1 0 1.549l-5.612 5.088m-5.73-3.214v1.615a.95.95 0 0 0 1.525.845l5.108-4.251a1.1 1.1 0 0 0 0-1.646L9.418 1.685a.95.95 0 0 0-1.525.846v1.7c-3.312 0-6 2.979-6 6.654v1.329a.7.7 0 0 0 1.344.353 5.174 5.174 0 0 1 4.652-3.191l.004-.003Z"/>
+                                    </svg>
+                                    <h3 class="ml-2">Share</h3>
+                                </button>
+                            </div>
+                            
+                        </div>
                     </div>
                     
                 </div>
             </div>
-            <div class="w-1/4 bg-[#f9f871] mt-3 rounded-2xl h-full">
-    
+            <div class="w-1/4 shadow-xl mt-3 flex flex-col rounded-2xl h-full px-8 bg-gray-100">
+                <div class="w-full h-14 flex items-center mt-4">
+                    <h3 class="text-xl font-bold ">Active Users</h3>
+                    <div class="w-3 h-3 rounded-full bg-green-500 ml-2"></div>
+                </div>
+                <!-- chatbox -->
+                <div class="w-full h-20 rounded-2xl flex px-8 bg-orange-300 items-center">
+                    <img src="" alt="" class="w-14 bg-black h-14 rounded-full">
+                    <h3 class="text-md font-bold ml-3">{{$users->fisrtname." ".$users->lastname}}</h3>
+                </div>
             </div>
         </div>
 
+        
+
     </div>
+
+    <script>
+        function popup() {
+            document.getElementById('post').style.display = 'block' ;
+        }
+        function popoff() {
+            document.getElementById('post').style.display = 'none' ;
+        }
+    </script>
 </body>
 </html>
